@@ -1,6 +1,10 @@
-# Buy Low Sell High (buy-low-sell-high-front)
+# Buy Low Sell High
 
-Buy Low Sell High dapp
+**Frontend** hackaton project
+
+## Requirements
+- Node >= 10.18
+- Yarn 1.x
 
 ## Install the dependencies
 ```bash
