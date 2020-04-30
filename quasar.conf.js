@@ -75,7 +75,7 @@ module.exports = function (/* ctx */) {
       // rtl: false, // https://quasar.dev/options/rtl-support
       showProgress: true,
       gzip: true,
-      analyze: true,
+      // analyze: true,
       distDir: 'docs',
       publicPath: process.env.NODE_ENV === 'production'
         ? '/dapp/'
