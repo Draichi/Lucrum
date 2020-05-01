@@ -5,8 +5,20 @@
 ## Requirements
 - Node >= 10.18
 - Yarn 1.x
+- Api key from [CryptoCompare](https://min-api.cryptocompare.com/pricing)
 
-## Install the dependencies
+## Setup
+
+Create `config.js` from `config-example.js`
+
+```js
+const config = {
+  cryptoCompareApiKey: '', // paste the api key here
+};
+```
+
+## Install dependencies
+
 ```bash
 yarn
 ```
