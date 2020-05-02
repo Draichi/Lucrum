@@ -1,20 +1,17 @@
 <template>
-  <div class="col-6 q-mx-xl" id="tradingview-wrapper">
     <q-card v-if="showGraph" class="custom-graph-card">
       <trading-vue
         :titleTxt="model"
         :width="width"
         :height="height"
         :data="data"
-        colorTitle="#00f2c3"
-        colorPanel="#46bfdf"
-        colorBack="#27293d"
-        colorGrid="#20223a"
-        colorCandleUp="#00f2c3"
-        colorCandleDown="#ec250d"
+        :colorBack="colorBack"
+        :colorGrid="colorGrid"
+        :colorText="colorText"
       />
     </q-card>
-  </div>
+  <!-- <div class="col-9 q-mx-md" id="tradingview-wrapper">
+  </div> -->
 </template>
 
 <script>
@@ -27,8 +24,8 @@ export default {
   },
   data() {
     return {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: '500',
+      height: '500',
     };
   },
   mounted() {
@@ -36,13 +33,11 @@ export default {
     window.addEventListener('resize', this.onResize);
   },
   methods: {
-
     onResize() {
       this.width = document.getElementById('tradingview-wrapper').getBoundingClientRect().width - 20;
       this.height = document.getElementById('tradingview-wrapper').getBoundingClientRect().height - 20;
     },
   },
-
   beforeDestroy() {
     window.removeEventListener('resize', this.onResize);
   },
@@ -52,9 +47,16 @@ export default {
       'data',
       'showGraph',
     ]),
+    colorBack() {
+      return this.$q.dark.isActive ? '#27293d' : '#f5f5f5';
+    },
+    colorGrid() {
+      return this.$q.dark.isActive ? '#20223a' : '#edeff2';
+    },
+    colorText() {
+      return this.$q.dark.isActive ? '#f5f5f5' : '#000000';
+    },
   },
-
-
 };
 </script>
 

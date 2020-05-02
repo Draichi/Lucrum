@@ -1,97 +1,81 @@
 <template>
-  <div>
-    <q-card class="q-pa-sm">
-      <div class="text-subtitle1 text-primary">Pair</div>
-      <q-select @input="getApiPrice" filled v-model="model" :options="options"/>
-    </q-card>
-    <q-card class="q-pa-sm q-mt-sm">
-      <div class="text-subtitle1 text-primary">Place an order</div>
-        <q-form
-          @submit="onSubmit"
-          @reset="onReset"
-          class="q-gutter-md"
-        >
-          <div class="row">
-            <div class="col-6">
-              <q-input
-                v-model="buy.amount"
-                :rules="[ val => val && val.length > 0 || 'Please type something']"
-                label="Buy amount"
-                type="number"
-                ref="buy-amount"
-                filled
-                lazy-rules
-              />
-            </div>
-            <div class="col q-ml-sm">
-              <q-input
-                v-model="buy.price"
-                :rules="[val => val !== null && val !== '' || 'Please type the price']"
-                type="number"
-                label="Buy price"
-                ref="buy-price"
-                lazy-rules
-                filled
-              />
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-6">
-              <q-input
-                v-model="sell.amount"
-                :rules="[ val => val && val.length > 0 || 'Please type something']"
-                label="Sell amount"
-                type="number"
-                ref="sell-amount"
-                lazy-rules
-                filled
-              />
-            </div>
-            <div class="col q-ml-sm">
-              <q-input
-                v-model="sell.price"
-                :rules="[val => val !== null && val !== '' || 'Please type the price']"
-                type="number"
-                label="Sell price"
-                ref="sell-price"
-                lazy-rules
-                filled
-              />
+  <q-card class="col q-pa-sm q-mt-sm">
+    <div :class="['text-subtitle1', textColor]">Place an order</div>
+      <q-form
+        @submit="onSubmit"
+        @reset="onReset"
+        class="fit"
+      >
+        <div class="column fit">
+          <div class="col">
+            <div class="row">
+              <div class="col-6">
+                <q-input
+                  v-model="buy.amount"
+                  :rules="[ val => val && val.length > 0 || 'Please type something']"
+                  label="Buy amount"
+                  type="number"
+                  ref="buy-amount"
+                  outlined
+                  no-error-icon
+                  lazy-rules
+                />
+              </div>
+              <div class="col q-ml-sm">
+                <q-input
+                  v-model="buy.price"
+                  :rules="[val => val !== null && val !== '' || 'Please type the price']"
+                  type="number"
+                  label="Buy price"
+                  ref="buy-price"
+                  lazy-rules
+                  no-error-icon
+                  outlined
+                />
+              </div>
             </div>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <q-input
-                v-model="expiration"
-                :rules="[ val => val && val.length > 0 || 'Please type something']"
-                label="Expiration (in days)"
-                ref="expiration"
-                type="number"
-                hint="Maximum time for your contract execution"
-                lazy-rules
-                filled
-              />
+          <div class="col">
+            <q-radio name="shape" v-model="shape" val="line" label="Buy" color="green" />
+            <q-radio name="shape" v-model="shape" val="rectangle" label="Sell" color="red" />
+          </div>
+          <div class="col">
+            <q-input
+              v-model="expiration"
+              :rules="[ val => val && val.length > 0 || 'Please type something']"
+              label="Expiration (in days)"
+              ref="expiration"
+              type="number"
+              hint="Maximum time for your contract execution"
+              lazy-rules
+              no-error-icon
+              outlined
+            />
+          </div>
+          <div class="col justify-end">
+            <div class="column items-end">
+              <div class="row">
+                <q-btn label="Submit" type="submit" color="primary"/>
+                <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+              </div>
             </div>
           </div>
+        </div>
+      </q-form>
 
-          <div>
-            <q-btn label="Submit" type="submit" color="primary"/>
-            <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
-          </div>
-        </q-form>
-
-    </q-card>
-  </div>
+  </q-card>
 </template>
 
 <script>
-import config from '../../config';
-
 export default {
   data() {
     return {
+      group: null,
+      shape: 'line',
+      options: [
+        { label: 'Buy', value: 'friend', color: 'green' },
+        { label: 'Sell', value: 'upload', color: 'red' },
+      ],
       buy: {
         amount: null,
         price: null,
@@ -101,29 +85,9 @@ export default {
         price: null,
       },
       expiration: null,
-      options: ['ETH/USD', 'BTC/USD'],
     };
   },
-  created() {
-    this.getApiPrice();
-  },
   methods: {
-    async getApiPrice() {
-      this.$store.commit('pairs/updateShowGraphState', false);
-      const [pairFrom, pairTo] = this.model.split('/');
-      const res = await this.$axios.get(`https://min-api.cryptocompare.com/data/v2/histohour?fsym=${pairFrom}&tsym=${pairTo}&limit=100&api_key=${config.cryptoCompareApiKey}`);
-      const { Data } = res.data.Data;
-      const ohlcv = Data.map((item) => [
-        item.time * 1000,
-        item.open,
-        item.high,
-        item.low,
-        item.close,
-        item.volumefrom,
-      ]);
-      this.$store.commit('pairs/setData', ohlcv);
-      this.$store.commit('pairs/updateShowGraphState', true);
-    },
     onSubmit() {
       this.$store.commit('orders/newOrder', {
         timestemp: new Date().toUTCString(),
@@ -155,21 +119,19 @@ export default {
     },
   },
   computed: {
-    model: {
-      get() {
-        return this.$store.getters['pairs/model'];
-      },
-      set(val) {
-        this.$store.commit('pairs/updatePair', val);
-      },
-    },
-    data() {
-      return this.$store.getters['pairs/data'];
+    textColor() {
+      return this.$store.getters['theme/textColor'];
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="scss">
+.q-field__label {
+  font-size: .9em;
+  top: .8em;
+}
+.q-field__control {
+  height: 40px;
+}
 </style>

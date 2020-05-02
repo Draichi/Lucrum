@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import orders from './orders';
 import pairs from './pairs';
+import theme from './theme';
 
 Vue.use(Vuex);
 
@@ -20,6 +21,7 @@ export default function (/* { ssrContext } */) {
     modules: {
       orders,
       pairs,
+      theme,
     },
 
     // enable strict mode (adds overhead!)

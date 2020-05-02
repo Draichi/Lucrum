@@ -1,5 +1,5 @@
 <template>
-  <div class="col q-ma-xl">
+  <div class="col q-ma-md">
     <q-table
       title="Open orders"
       :data="openOrders"
@@ -65,7 +65,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-
-</style>
