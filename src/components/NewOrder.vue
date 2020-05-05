@@ -10,11 +10,11 @@
           <div class="row">
             <div class="col-6">
               <q-input
-                v-model="buy.amount"
+                v-model="amount"
                 :rules="[ val => val && val.length > 0 || 'Please type something']"
-                label="Buy amount"
+                :label="`${type} amount`"
                 type="number"
-                ref="buy-amount"
+                ref="amount"
                 outlined
                 no-error-icon
                 lazy-rules
@@ -22,11 +22,11 @@
             </div>
             <div class="col q-ml-sm">
               <q-input
-                v-model="buy.price"
+                v-model="price"
                 :rules="[val => val !== null && val !== '' || 'Please type the price']"
+                :label="`${type} price`"
                 type="number"
-                label="Buy price"
-                ref="buy-price"
+                ref="price"
                 lazy-rules
                 no-error-icon
                 outlined
@@ -36,8 +36,8 @@
         </div>
         <div class="col self-cente">
           <div class="row justify-evenly">
-            <q-radio name="shape" v-model="shape" val="line" label="Buy" color="green" />
-            <q-radio name="shape" v-model="shape" val="rectangle" label="Sell" color="red" />
+            <q-radio name="type" v-model="type" val="buy" label="Buy" color="green" />
+            <q-radio name="type" v-model="type" val="sell" label="Sell" color="red" />
           </div>
         </div>
         <div class="col">
@@ -69,57 +69,44 @@
 export default {
   data() {
     return {
-      group: null,
-      shape: 'line',
-      options: [
-        { label: 'Buy', value: 'friend', color: 'green' },
-        { label: 'Sell', value: 'upload', color: 'red' },
-      ],
-      buy: {
-        amount: null,
-        price: null,
-      },
-      sell: {
-        amount: null,
-        price: null,
-      },
+      type: 'buy',
+      amount: null,
+      price: null,
       expiration: null,
     };
   },
   methods: {
     onSubmit() {
       this.$store.commit('orders/newOrder', {
-        timestemp: new Date().toUTCString(),
         pair: this.model,
-        buyPrice: this.buy.price,
-        sellPrice: this.sell.price,
-        buyAmount: this.buy.amount,
-        sellAmount: this.sell.amount,
-        expiration: this.expiration,
+        price: this.price,
+        type: this.type,
+        amount: this.amount,
+        gain: Math.random(),
+        expiration: new Date(new Date().getTime() * 1.01).toUTCString(),
         status: 'open',
         id: Math.random(),
       });
       this.onReset();
       const inputRefs = [
-        'buy-price',
-        'buy-amount',
-        'sell-price',
-        'sell-amount',
+        'price',
+        'amount',
         'expiration',
       ];
       inputRefs.forEach((input) => this.$refs[input].resetValidation());
     },
     onReset() {
-      this.buy.price = null;
-      this.buy.amount = null;
-      this.sell.price = null;
-      this.sell.amount = null;
+      this.price = null;
+      this.amount = null;
       this.expiration = null;
     },
   },
   computed: {
     textColor() {
       return this.$store.getters['theme/textColor'];
+    },
+    model() {
+      return this.$store.getters['pairs/model'];
     },
   },
 };

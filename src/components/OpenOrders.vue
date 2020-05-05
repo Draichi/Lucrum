@@ -28,9 +28,6 @@
           <q-btn @click="cancelOrder(props.row)" flat>cancel order</q-btn>
         </q-td>
       </q-tr>
-      <!-- <template v-slot:bottom>
-        <div style="display: none"></div>
-      </template> -->
     </q-table>
   </div>
 </template>
@@ -43,18 +40,18 @@ export default {
         rowsPerPage: 1000,
       },
       columns: [
+        // {
+        //   name: 'timestemp', align: 'left', label: 'Date', field: 'timestemp', sortable: true,
+        // },
         {
-          name: 'timestemp', align: 'left', label: 'Date', field: 'timestemp', sortable: true,
+          name: 'pair', label: 'Pair', field: 'pair', sortable: true, align: 'left',
         },
-        {
-          name: 'pair', label: 'Pair', field: 'pair', sortable: true,
-        },
-        { name: 'buyPrice', label: 'Buy price', field: 'buyPrice' },
-        { name: 'sellPrice', label: 'Sell price', field: 'sellPrice' },
-        { name: 'buyAmount', label: 'Buy amount', field: 'buyAmount' },
-        { name: 'sellAmount', label: 'Sell amount', field: 'sellAmount' },
+        { name: 'price', label: 'Price', field: 'price' },
+        { name: 'amount', label: 'Amount', field: 'amount' },
         { name: 'expiration', label: 'Expiration time', field: 'expiration' },
+        { name: 'type', label: 'Buy/Sell', field: 'type' },
         { name: 'status', label: 'Status', field: 'status' },
+        { name: 'gain', label: 'Gains', field: 'gain' },
         {
           name: 'id', label: 'Action', align: 'right', field: 'id',
         },
