@@ -5,7 +5,7 @@
       @input="getApiPrice"
       v-model="model"
       :options="options"
-      filled
+      outlined
     />
   </q-card>
 </template>
@@ -54,3 +54,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.q-field--auto-height .q-field__control,
+.q-field--auto-height .q-field__native {
+  min-height: -webkit-fill-available;
+}
+
+.q-field__marginal {
+  height: unset;
+}
+
+.q-select {
+  font-size: .9em;
+  top: .8em;
+  height: 3em;
+}
+</style>
