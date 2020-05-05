@@ -2,7 +2,8 @@
   <q-layout view="lHh Lpr lFf">
     <q-toolbar :class="textColor">
       <q-avatar>
-        <q-icon name="texture"></q-icon>
+        <!-- <q-icon name="texture"></q-icon> -->
+        <img src="~/assets/logo.jpg" alt="logo" class="custom-img">
       </q-avatar>
       <q-toolbar-title>
         Buy Low Sell High
@@ -38,3 +39,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.custom-img {
+  object-fit: cover;
+}
+</style>
