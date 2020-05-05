@@ -16,11 +16,18 @@
         round
       />
       <q-btn
+        v-if="!providerReady"
+        @click="connectMetamask"
         icon="img:statics/metamask.svg"
         label="metamask"
         flat
       />
-      <!-- <q-avatar color="primary" size="md" text-color="white">J</q-avatar> -->
+      <q-avatar
+        v-else
+        color="primary"
+        size="md"
+        text-color="white"
+      >0x</q-avatar>
     </q-toolbar>
     <q-page-container>
       <router-view />
@@ -32,6 +39,23 @@
 
 export default {
   name: 'MainLayout',
+  data() {
+    return {
+      providerReady: false,
+    };
+  },
+  created() {
+    window.web3.currentProvider.publicConfigStore.on('update', this.setWalletStatus);
+    this.providerReady = !!window.web3.currentProvider.selectedAddress;
+  },
+  methods: {
+    connectMetamask() {
+      window.ethereum.enable();
+    },
+    setWalletStatus(obj) {
+      this.providerReady = obj.isUnlocked;
+    },
+  },
   computed: {
     textColor() {
       return this.$store.getters['theme/textColor'];
