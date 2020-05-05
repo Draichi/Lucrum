@@ -1,10 +1,14 @@
 <template>
   <div class="col q-ma-md">
     <q-table
-      title="Open orders"
       :data="openOrders"
       :columns="columns"
+      :pagination="pagination"
+      :rows-per-page-options="[0]"
+      style="height: 27vh"
+      title="Open orders"
       row-key="name"
+      virtual-scroll
     >
       <q-tr
         slot="body"
@@ -24,6 +28,9 @@
           <q-btn @click="cancelOrder(props.row)" flat>cancel order</q-btn>
         </q-td>
       </q-tr>
+      <!-- <template v-slot:bottom>
+        <div style="display: none"></div>
+      </template> -->
     </q-table>
   </div>
 </template>
@@ -32,6 +39,9 @@
 export default {
   data() {
     return {
+      pagination: {
+        rowsPerPage: 1000,
+      },
       columns: [
         {
           name: 'timestemp', align: 'left', label: 'Date', field: 'timestemp', sortable: true,
@@ -65,3 +75,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+  .q-table__bottom {
+    display: none;
+  }
+</style>
