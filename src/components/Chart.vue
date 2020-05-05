@@ -10,6 +10,15 @@
         :colorText="colorText"
       />
     </q-card>
+    <div
+      v-else
+      class="fit row items-center justify-center"
+    >
+      <q-spinner-hourglass
+        color="primary"
+        size="4em"
+      />
+    </div>
   <!-- <div class="col-9 q-mx-md" id="tradingview-wrapper">
   </div> -->
 </template>
