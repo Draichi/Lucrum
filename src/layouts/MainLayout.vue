@@ -57,7 +57,7 @@ export default {
     setWalletStatus(obj) {
       this.walletAddress = obj.selectedAddress;
       if (obj.selectedAddress) {
-        window.web3.eth.getBalance(obj.selectedAddress, function (error, result) {
+        window.web3.eth.getBalance(obj.selectedAddress, (error, result) => {
           this.ETHBalance = window.web3.fromWei(Number(result), 'ether');
         });
       }
