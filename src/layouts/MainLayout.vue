@@ -42,6 +42,8 @@ export default {
   data() {
     return {
       providerReady: false,
+      walletAddress: null,
+      ETHBalance: null,
     };
   },
   created() {
@@ -53,6 +55,12 @@ export default {
       window.ethereum.enable();
     },
     setWalletStatus(obj) {
+      this.walletAddress = obj.selectedAddress;
+      if (obj.selectedAddress) {
+        window.web3.eth.getBalance(obj.selectedAddress, function (error, result) {
+          this.ETHBalance = window.web3.fromWei(Number(result), 'ether');
+        });
+      }
       this.providerReady = obj.isUnlocked;
     },
   },
