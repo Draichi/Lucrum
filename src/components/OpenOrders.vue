@@ -1,5 +1,5 @@
 <template>
-  <div class="col q-ma-md">
+  <div class="col q-mt-md">
     <q-table
       :data="openOrders"
       :columns="columns"

@@ -1,8 +1,8 @@
 export default function () {
   return {
-    model: 'BTC/USD',
+    model: 'ETH/DAI',
     showGraph: false,
-    options: ['BTC/USD', 'ETH/USD'],
+    options: ['ETH/DAI', 'ETH/USD'],
     data: {
       ohlcv: [],
     },

@@ -3,14 +3,12 @@
     <div class="row q-mt-sm custom-row">
       <div class="col-9 q-mx-md" id="tradingview-wrapper">
         <Chart/>
+        <OpenOrders/>
       </div>
       <div class="column col q-mr-md">
         <PairSelector/>
         <NewOrder/>
       </div>
-    </div>
-    <div class="row">
-      <OpenOrders/>
     </div>
   </div>
 </template>
