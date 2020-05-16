@@ -6,7 +6,7 @@
         <OpenOrders/>
       </div>
       <div class="column col q-mr-md">
-        <PairSelector/>
+        <!-- <PairSelector/> -->
         <NewOrder/>
       </div>
     </div>
@@ -18,7 +18,8 @@
 import OpenOrders from '../components/OpenOrders';
 import NewOrder from '../components/NewOrder';
 import Chart from '../components/Chart';
-import PairSelector from '../components/PairSelector';
+// import PairSelector from '../components/PairSelector';
+import config from '../../config';
 
 export default {
   name: 'PageIndex',
@@ -26,7 +27,28 @@ export default {
     Chart,
     OpenOrders,
     NewOrder,
-    PairSelector,
+    // PairSelector,
+  },
+  created() {
+    this.getApiPrice();
+  },
+  methods: {
+    async getApiPrice() {
+      this.$store.commit('pairs/updateShowGraphState', false);
+      // const [pairFrom, pairTo] = this.model.split('/');
+      const res = await this.$axios.get(`https://min-api.cryptocompare.com/data/v2/histohour?fsym=ETH&tsym=DAI&limit=100&api_key=${config.cryptoCompareApiKey}`);
+      const { Data } = res.data.Data;
+      const ohlcv = Data.map((item) => [
+        item.time * 1000,
+        item.open,
+        item.high,
+        item.low,
+        item.close,
+        item.volumefrom,
+      ]);
+      this.$store.commit('pairs/setData', ohlcv);
+      this.$store.commit('pairs/updateShowGraphState', true);
+    },
   },
 };
 

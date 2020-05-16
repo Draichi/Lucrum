@@ -1,7 +1,7 @@
 <template>
     <q-card v-if="showGraph" class="custom-graph-card">
       <trading-vue
-        :titleTxt="model"
+        :titleTxt="'WETH/DAI'"
         :width="width"
         :height="height"
         :data="data"

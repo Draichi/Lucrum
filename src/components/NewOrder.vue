@@ -1,5 +1,5 @@
 <template>
-  <q-card class="col q-pa-sm q-mt-sm">
+  <q-card class="col q-pa-md">
     <div :class="['text-subtitle1', textColor]">Place an order</div>
       <q-form
         @submit="onSubmit"
