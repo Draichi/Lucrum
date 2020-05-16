@@ -119,9 +119,9 @@ module.exports = function (/* ctx */) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: 'Buy Low Sell High',
-        short_name: 'Buy Low Sell High',
-        description: 'Buy Low Sell High dapp',
+        name: 'Lucrum',
+        short_name: 'Lucrum',
+        description: 'Lucrum decentralized exchange',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -187,7 +187,7 @@ module.exports = function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'buy-low-sell-high-front',
+        appId: 'lucrum',
       },
 
       // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration

@@ -6,7 +6,7 @@
         <img src="~/assets/logo.jpg" alt="logo" class="custom-img">
       </q-avatar>
       <q-toolbar-title>
-        Buy Low Sell High
+        Lucrum
       </q-toolbar-title>
       <q-btn
         @click="$q.dark.toggle()"

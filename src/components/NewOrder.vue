@@ -12,7 +12,7 @@
               <q-input
                 v-model="amount"
                 :rules="[ val => val && val.length > 0 || 'Please type something']"
-                :label="`${type} amount`"
+                label="Amount"
                 type="number"
                 ref="amount"
                 outlined
@@ -24,7 +24,7 @@
               <q-input
                 v-model="price"
                 :rules="[val => val !== null && val !== '' || 'Please type the price']"
-                :label="`${type} price`"
+                label="Price"
                 type="number"
                 ref="price"
                 lazy-rules
@@ -47,20 +47,19 @@
             label="Expiration (in days)"
             ref="expiration"
             type="number"
-            hint="Maximum time for your contract execution"
             lazy-rules
             no-error-icon
             outlined
           />
         </div>
-        <div class="col self-center gain__container">
+        <!-- <div class="col self-center gain__container">
           You will profit <div v-if="amount && price" class="gain__text">{{ gain }}</div>
-        </div>
-        <div class="col justify-end custom-buttons__container">
+        </div> -->
+        <div class="col column justify-end custom-buttons__container">
           <div class="column items-end">
             <div class="row">
               <q-btn label="Submit" type="submit" color="primary"/>
-              <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" />
+              <!-- <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" /> -->
             </div>
           </div>
         </div>
