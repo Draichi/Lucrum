@@ -9,12 +9,18 @@
 
 ## Setup
 
-Create `config.js` from `config-example.js`
+Paste the API key in `config-example.js`
 
 ```js
 const config = {
   cryptoCompareApiKey: '', // paste the api key here
 };
+```
+
+Create `config.js` from `config-example.js`
+
+```sh
+cp config-example.js config.js
 ```
 
 ## Install dependencies
