@@ -1,25 +1,19 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-toolbar :class="textColor">
+    <q-toolbar :class="[textColor, 'q-px-lg']">
       <q-avatar>
-        <!-- <q-icon name="texture"></q-icon> -->
-        <img src="~/assets/logo.jpg" alt="logo" class="custom-img">
+        <img
+          src="~/assets/logo.png" alt="logo" class="custom-img">
       </q-avatar>
       <q-toolbar-title>
         Lucrum
       </q-toolbar-title>
       <q-btn
-        @click="$q.dark.toggle()"
-        icon="wb_incandescent"
-        size="sm"
-        class="q-mr-md"
-        round
-      />
-      <q-btn
         v-if="!providerReady"
         @click="connectMetamask"
         icon="img:statics/metamask.svg"
-        label="metamask"
+        label="Connect wallet"
+        no-caps
         flat
       />
       <q-avatar
@@ -28,6 +22,11 @@
         size="md"
         text-color="white"
       >0x</q-avatar>
+      <q-toggle
+        v-model="darkTheme"
+        @input="$q.dark.toggle()"
+        :label="darkTheme ? 'Dark' : 'Light'"
+      />
     </q-toolbar>
     <q-page-container>
       <router-view />
@@ -41,6 +40,7 @@ export default {
   name: 'MainLayout',
   data() {
     return {
+      darkTheme: this.$q.dark.isActive,
       providerReady: false,
       walletAddress: null,
       ETHBalance: null,

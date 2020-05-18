@@ -52,6 +52,7 @@ export default {
         { name: 'type', label: 'Buy/Sell', field: 'type' },
         { name: 'status', label: 'Status', field: 'status' },
         { name: 'gain', label: 'Gains', field: 'gain' },
+        { name: 'etherscan', label: 'Link', field: 'etherscan' },
         {
           name: 'id', label: 'Action', align: 'right', field: 'id',
         },

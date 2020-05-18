@@ -34,12 +34,26 @@
             </div>
           </div>
         </div>
-        <div class="col self-cente">
-          <div class="row justify-evenly">
-            <q-radio name="type" v-model="type" val="buy" label="Buy" color="green" />
-            <q-radio name="type" v-model="type" val="sell" label="Sell" color="red" />
-          </div>
+        <div class="col">
+          <q-btn-toggle
+            v-model="type"
+            spread
+            no-caps
+            :toggle-color="type == 'buy' ? 'positive' : 'negative'"
+            color="white"
+            text-color="black"
+            :options="[
+              {label: 'Buy', value: 'buy'},
+              {label: 'Sell', value: 'sell'}
+            ]"
+          />
         </div>
+          <!-- <div class="col self-cente">
+            <div class="row justify-evenly">
+              <q-radio name="type" v-model="type" val="buy" label="Buy" color="green" />
+              <q-radio name="type" v-model="type" val="sell" label="Sell" color="red" />
+            </div>
+          </div> -->
         <div class="col">
           <q-input
             v-model="expiration"
@@ -52,13 +66,14 @@
             outlined
           />
         </div>
+
         <!-- <div class="col self-center gain__container">
           You will profit <div v-if="amount && price" class="gain__text">{{ gain }}</div>
         </div> -->
         <div class="col column justify-end custom-buttons__container">
+          <q-btn label="Submit" type="submit" color="primary"/>
           <div class="column items-end">
             <div class="row">
-              <q-btn label="Submit" type="submit" color="primary"/>
               <!-- <q-btn label="Reset" type="reset" color="primary" flat class="q-ml-sm" /> -->
             </div>
           </div>
