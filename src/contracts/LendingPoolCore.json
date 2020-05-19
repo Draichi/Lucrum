@@ -1,0 +1,290 @@
+{
+  "contractName": "LendingPoolCore",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "_reserve",
+          "type": "address"
+        }
+      ],
+      "name": "getReserveATokenAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"name\":\"_reserve\",\"type\":\"address\"}],\"name\":\"getReserveATokenAddress\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol\":\"LendingPoolCore\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol\":{\"keccak256\":\"0xd5e38093b303a9a538f4ebd7779fb251b058f40e573211b840aba420cab959bb\",\"urls\":[\"bzzr://d0084f34c41fe273ab21fd649d3484c295c595c79dbfb84652ac4b04addc8060\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.8;\n\ninterface LendingPoolCore {\n  function getReserveATokenAddress(address _reserve) external view returns(address);\n}",
+  "sourcePath": "/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol",
+  "ast": {
+    "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol",
+    "exportedSymbols": {
+      "LendingPoolCore": [
+        1959
+      ]
+    },
+    "id": 1960,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1951,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:13"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1959,
+        "linearizedBaseContracts": [
+          1959
+        ],
+        "name": "LendingPoolCore",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1958,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserveATokenAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1954,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1953,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1958,
+                  "src": "87:16:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1952,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "87:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "86:18:13"
+            },
+            "returnParameters": {
+              "id": 1957,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1956,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1958,
+                  "src": "127:7:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1955,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "126:9:13"
+            },
+            "scope": 1959,
+            "src": "54:82:13",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1960,
+        "src": "24:114:13"
+      }
+    ],
+    "src": "0:138:13"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol",
+    "exportedSymbols": {
+      "LendingPoolCore": [
+        1959
+      ]
+    },
+    "id": 1960,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1951,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:13"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 1959,
+        "linearizedBaseContracts": [
+          1959
+        ],
+        "name": "LendingPoolCore",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 1958,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "getReserveATokenAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1954,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1953,
+                  "name": "_reserve",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1958,
+                  "src": "87:16:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1952,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "87:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "86:18:13"
+            },
+            "returnParameters": {
+              "id": 1957,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1956,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1958,
+                  "src": "127:7:13",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1955,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:7:13",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "126:9:13"
+            },
+            "scope": 1959,
+            "src": "54:82:13",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1960,
+        "src": "24:114:13"
+      }
+    ],
+    "src": "0:138:13"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-19T01:24:53.433Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

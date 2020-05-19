@@ -55,6 +55,7 @@ export default {
       window.ethereum.enable();
     },
     setWalletStatus(obj) {
+      console.log(obj);
       this.walletAddress = obj.selectedAddress;
       if (obj.selectedAddress) {
         window.web3.eth.getBalance(obj.selectedAddress, (error, result) => {

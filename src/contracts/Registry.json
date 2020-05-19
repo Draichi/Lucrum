@@ -1,0 +1,1307 @@
+{
+  "contractName": "Registry",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "aave",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "chainlink",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "kyber",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "bridge",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "name": "_aave",
+          "type": "address"
+        },
+        {
+          "name": "_kyber",
+          "type": "address"
+        },
+        {
+          "name": "_chainlink",
+          "type": "address"
+        },
+        {
+          "name": "_bridge",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"renounceOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"aave\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"isOwner\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"chainlink\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"kyber\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bridge\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"name\":\"_aave\",\"type\":\"address\"},{\"name\":\"_kyber\",\"type\":\"address\"},{\"name\":\"_chainlink\",\"type\":\"address\"},{\"name\":\"_bridge\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":true,\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"}],\"devdoc\":{\"methods\":{\"isOwner()\":{\"details\":\"Returns true if the caller is the current owner.\"},\"owner()\":{\"details\":\"Returns the address of the current owner.\"},\"renounceOwnership()\":{\"details\":\"Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.\"},\"transferOwnership(address)\":{\"details\":\"Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.\"}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/saitejakuruva/Documents/lucrum/contracts/Registry.sol\":\"Registry\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/saitejakuruva/Documents/lucrum/contracts/Registry.sol\":{\"keccak256\":\"0xe9a08a257313742be3731e64d211808295f1639323f09bfc813cc90bcdda9d2a\",\"urls\":[\"bzzr://481c71d6f87d05e6821c65ff4c2293c243df51ba009f13bbee1e8cccbf7bf317\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveHandler.sol\":{\"keccak256\":\"0x85830a1c93d60a53ffd115fdf8dd8a84964e4368650423d87b9da808f1f3ea98\",\"urls\":[\"bzzr://ba5decb568ebaf7f48ec5adcc96b46f9fc03a5350be7d37fd0546137c2acfc14\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveToKyberBridge.sol\":{\"keccak256\":\"0x73f4a3a4f2dae15ba90f3d218e1e25d11047e1ac73c6387c600622bc1c043532\",\"urls\":[\"bzzr://f2a9093a3077b437281cf56b938886c6cbeaf98fbaf7d63b0be54698ff4423c0\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/handlers/ChainlinkHandler.sol\":{\"keccak256\":\"0x4bdd97180bf46ea04f7ea83c97c3950452ee1ebda803b58143a7a78764ff98b1\",\"urls\":[\"bzzr://5c05488176816e7a20ee294c5a915c25d28f6e49307f1a1b42a29515af878aee\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/handlers/KyberHandler.sol\":{\"keccak256\":\"0x95cca78f0ad0f958e1e4dd3de525d4769535462922145936439fc05d728e8ff7\",\"urls\":[\"bzzr://611e414540600afe25cb1479a78443b79f503a9c3267a405b3d35c9960705ff7\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/IERC20.sol\":{\"keccak256\":\"0x6beeff1bd6bcecc0b8c3c94b3f170d52ff807c82c8c222d9e6f0e95761b3b328\",\"urls\":[\"bzzr://9d8afe794fece0f1772c49c5c53f8957b3d4123b764683c1e5d17e6061145fe9\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/WETH9.sol\":{\"keccak256\":\"0x919597c1f3212c9b50d44e2fa260bac4f880b1ea65d591578fb614dc90e3160a\",\"urls\":[\"bzzr://59428e999d239e115dbefb4e79cfbe2d33a679402c4dd6536da7d3c9061cb35d\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/AToken.sol\":{\"keccak256\":\"0xd18322a97243f3354799ee638889cfe863878d321ecf69ebb0cd6e669df59df1\",\"urls\":[\"bzzr://be31c1675f5ea84aaddb7b1bb4ebab09f23e5db33928ffe32dddb6f48f7168c4\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPool.sol\":{\"keccak256\":\"0x43aba9eefc31c3fdc428487db132d8e1cd83dc62793991b1fd364616ef35d8ad\",\"urls\":[\"bzzr://44a08da76d65a6ddf831560b0e0c944a9946b4a982ab8de6136517b53a5cb415\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolAddressesProvider.sol\":{\"keccak256\":\"0x2d282cf2eced37254efd4700562bb8ecd2d63246978359975e2f43cfadfe00d8\",\"urls\":[\"bzzr://aba3f7cfdc90e82ea35a6cf4a2db34e62f823cd0f3a84cb8adf92b78ca6a2b49\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/aave/LendingPoolCore.sol\":{\"keccak256\":\"0xd5e38093b303a9a538f4ebd7779fb251b058f40e573211b840aba420cab959bb\",\"urls\":[\"bzzr://d0084f34c41fe273ab21fd649d3484c295c595c79dbfb84652ac4b04addc8060\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/chainlink/ChainLink.sol\":{\"keccak256\":\"0xc4cd03694ad6691190e0fa6e0122f2dc4c3eadbeeeecc241239f8547a185321f\",\"urls\":[\"bzzr://1c051f6acf058e923656069054227a140f50f883edf475e38c32b83f5b9635f2\"]},\"/Users/saitejakuruva/Documents/lucrum/contracts/lib/external/kyber/KyberNetworkProxy.sol\":{\"keccak256\":\"0xc1dddfe52f3e10295cf1003538fae930a7e15208fdb410b3e595c72ae3824c1e\",\"urls\":[\"bzzr://8a31c9a967407328eb24594884a97469b9b9e7a227768a57c64244224aa31571\"]},\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x90a3995645af7562d84b9d69363ffa5ae7217714ab61e951bf7bc450f40e4061\",\"urls\":[\"bzzr://51482c01bddf23793bddee43b60ab9578a62948a4f2082def24ea792a553b055\"]},\"@openzeppelin/contracts/ownership/Ownable.sol\":{\"keccak256\":\"0x6fb9d7889769d7cc161225f9ef7a90e468ba9788b253816f8d8b6894d3472c24\",\"urls\":[\"bzzr://ab46c9368bc3abdded5eb85858304518c8a0291060ab42087075d759dbf3925f\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405160808061049d8339810180604052608081101561003057600080fd5b508051602080830151604084015160609094015192939092909160009061005a906100f7811b901c565b600080546001600160a01b0319166001600160a01b0383169081178255604051929350917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350600180546001600160a01b039586166001600160a01b03199182161790915560028054948616948216949094179093556003805492851692841692909217909155600480549190931691161790556100fb565b3390565b6103938061010a6000396000f3fe608060405234801561001057600080fd5b50600436106100885760003560e01c80639c3feeb71161005b5780639c3feeb7146100df578063a2d10ba5146100e7578063e78cea92146100ef578063f2fde38b146100f757610088565b8063715018a61461008d578063819faf7b146100975780638da5cb5b146100bb5780638f32d59b146100c3575b600080fd5b61009561011d565b005b61009f6101c3565b604080516001600160a01b039092168252519081900360200190f35b61009f6101d2565b6100cb6101e1565b604080519115158252519081900360200190f35b61009f610205565b61009f610214565b61009f610223565b6100956004803603602081101561010d57600080fd5b50356001600160a01b0316610232565b6101256101e1565b6101795760408051600160e51b62461bcd02815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6001546001600160a01b031681565b6000546001600160a01b031690565b600080546001600160a01b03166101f661029a565b6001600160a01b031614905090565b6003546001600160a01b031681565b6002546001600160a01b031681565b6004546001600160a01b031681565b61023a6101e1565b61028e5760408051600160e51b62461bcd02815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b6102978161029e565b50565b3390565b6001600160a01b0381166102e657604051600160e51b62461bcd0281526004018080602001828103825260268152602001806103426026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a165627a7a72305820d34f250b7eec126f5e0dbc148f0dcbe75009eae96cd45ab2a279430db057421f0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100885760003560e01c80639c3feeb71161005b5780639c3feeb7146100df578063a2d10ba5146100e7578063e78cea92146100ef578063f2fde38b146100f757610088565b8063715018a61461008d578063819faf7b146100975780638da5cb5b146100bb5780638f32d59b146100c3575b600080fd5b61009561011d565b005b61009f6101c3565b604080516001600160a01b039092168252519081900360200190f35b61009f6101d2565b6100cb6101e1565b604080519115158252519081900360200190f35b61009f610205565b61009f610214565b61009f610223565b6100956004803603602081101561010d57600080fd5b50356001600160a01b0316610232565b6101256101e1565b6101795760408051600160e51b62461bcd02815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b600080546040516001600160a01b03909116907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a3600080546001600160a01b0319169055565b6001546001600160a01b031681565b6000546001600160a01b031690565b600080546001600160a01b03166101f661029a565b6001600160a01b031614905090565b6003546001600160a01b031681565b6002546001600160a01b031681565b6004546001600160a01b031681565b61023a6101e1565b61028e5760408051600160e51b62461bcd02815260206004820181905260248201527f4f776e61626c653a2063616c6c6572206973206e6f7420746865206f776e6572604482015290519081900360640190fd5b6102978161029e565b50565b3390565b6001600160a01b0381166102e657604051600160e51b62461bcd0281526004018080602001828103825260268152602001806103426026913960400191505060405180910390fd5b600080546040516001600160a01b03808516939216917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e091a3600080546001600160a01b0319166001600160a01b039290921691909117905556fe4f776e61626c653a206e6577206f776e657220697320746865207a65726f2061646472657373a165627a7a72305820d34f250b7eec126f5e0dbc148f0dcbe75009eae96cd45ab2a279430db057421f0029",
+  "sourceMap": "242:457:3:-;;;415:281;8:9:-1;5:2;;;30:1;27;20:12;5:2;415:281:3;;;;;;;;;;;;;13:3:-1;8;5:12;2:2;;;30:1;27;20:12;2:2;-1:-1;415:281:3;;;;;;;;;;;;;;;;;;;;;;698:17:18;;718:12;;:10;;;:12;;:::i;:::-;740:6;:18;;-1:-1:-1;;;;;;740:18:18;-1:-1:-1;;;;;740:18:18;;;;;;;773:43;;740:18;;-1:-1:-1;740:18:18;773:43;;740:6;;773:43;-1:-1:-1;595:4:3;:12;;-1:-1:-1;;;;;595:12:3;;;-1:-1:-1;;;;;;595:12:3;;;;;;;617:5;:14;;;;;;;;;;;;;;;641:9;:22;;;;;;;;;;;;;;;673:6;:16;;;;;;;;;;;242:457;;788:96:16;867:10;788:96;:::o;242:457:3:-;;;;;;;",
+  "deployedSourceMap": "242:457:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;242:457:3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1684:137:18;;;:::i;:::-;;278:23:3;;;:::i;:::-;;;;-1:-1:-1;;;;;278:23:3;;;;;;;;;;;;;;899:77:18;;;:::i;1250:92::-;;;:::i;:::-;;;;;;;;;;;;;;;;;;338:33:3;;;:::i;307:25::-;;;:::i;377:31::-;;;:::i;1970:107:18:-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1970:107:18;-1:-1:-1;;;;;1970:107:18;;:::i;1684:137::-;1103:9;:7;:9::i;:::-;1095:54;;;;;-1:-1:-1;;;;;1095:54:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1782:1;1766:6;;1745:40;;-1:-1:-1;;;;;1766:6:18;;;;1745:40;;1782:1;;1745:40;1812:1;1795:19;;-1:-1:-1;;;;;;1795:19:18;;;1684:137::o;278:23:3:-;;;-1:-1:-1;;;;;278:23:3;;:::o;899:77:18:-;937:7;963:6;-1:-1:-1;;;;;963:6:18;899:77;:::o;1250:92::-;1290:4;1329:6;;-1:-1:-1;;;;;1329:6:18;1313:12;:10;:12::i;:::-;-1:-1:-1;;;;;1313:22:18;;1306:29;;1250:92;:::o;338:33:3:-;;;-1:-1:-1;;;;;338:33:3;;:::o;307:25::-;;;-1:-1:-1;;;;;307:25:3;;:::o;377:31::-;;;-1:-1:-1;;;;;377:31:3;;:::o;1970:107:18:-;1103:9;:7;:9::i;:::-;1095:54;;;;;-1:-1:-1;;;;;1095:54:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2042:28;2061:8;2042:18;:28::i;:::-;1970:107;:::o;788:96:16:-;867:10;788:96;:::o;2178:225:18:-;-1:-1:-1;;;;;2251:22:18;;2243:73;;;;-1:-1:-1;;;;;2243:73:18;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2352:6;;;2331:38;;-1:-1:-1;;;;;2331:38:18;;;;2352:6;;;2331:38;;;2379:6;:17;;-1:-1:-1;;;;;;2379:17:18;-1:-1:-1;;;;;2379:17:18;;;;;;;;;;2178:225::o",
+  "source": "pragma solidity 0.5.8;\n\nimport \"@openzeppelin/contracts/ownership/Ownable.sol\";\nimport \"./handlers/KyberHandler.sol\";\nimport \"./handlers/ChainlinkHandler.sol\";\nimport \"./handlers/AaveHandler.sol\";\nimport \"./handlers/AaveToKyberBridge.sol\";\n\n\ncontract Registry is Ownable {\n\n    AaveHandler public aave;\n    KyberHandler public kyber;\n    ChainlinkHandler public chainlink;\n    AaveToKyberBridge public bridge;\n\n    constructor\n    (\n        AaveHandler _aave,\n        KyberHandler _kyber,\n        ChainlinkHandler _chainlink,\n        AaveToKyberBridge _bridge\n    )\n        public\n    {\n        aave = _aave;\n        kyber = _kyber;\n        chainlink = _chainlink;\n        bridge = _bridge;\n    }\n\n}",
+  "sourcePath": "/Users/saitejakuruva/Documents/lucrum/contracts/Registry.sol",
+  "ast": {
+    "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/Registry.sol",
+    "exportedSymbols": {
+      "Registry": [
+        964
+      ]
+    },
+    "id": 965,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 920,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:3"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/ownership/Ownable.sol",
+        "file": "@openzeppelin/contracts/ownership/Ownable.sol",
+        "id": 921,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 2404,
+        "src": "24:55:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/KyberHandler.sol",
+        "file": "./handlers/KyberHandler.sol",
+        "id": 922,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1603,
+        "src": "80:37:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/ChainlinkHandler.sol",
+        "file": "./handlers/ChainlinkHandler.sol",
+        "id": 923,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1472,
+        "src": "118:41:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveHandler.sol",
+        "file": "./handlers/AaveHandler.sol",
+        "id": 924,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1355,
+        "src": "160:36:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveToKyberBridge.sol",
+        "file": "./handlers/AaveToKyberBridge.sol",
+        "id": 925,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1427,
+        "src": "197:42:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 926,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2403,
+              "src": "263:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$2403",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 927,
+            "nodeType": "InheritanceSpecifier",
+            "src": "263:7:3"
+          }
+        ],
+        "contractDependencies": [
+          2098,
+          2403
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 964,
+        "linearizedBaseContracts": [
+          964,
+          2403,
+          2098
+        ],
+        "name": "Registry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 929,
+            "name": "aave",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "278:23:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AaveHandler_$1354",
+              "typeString": "contract AaveHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 928,
+              "name": "AaveHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1354,
+              "src": "278:11:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                "typeString": "contract AaveHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 931,
+            "name": "kyber",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "307:25:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_KyberHandler_$1602",
+              "typeString": "contract KyberHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 930,
+              "name": "KyberHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1602,
+              "src": "307:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                "typeString": "contract KyberHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 933,
+            "name": "chainlink",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "338:33:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+              "typeString": "contract ChainlinkHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 932,
+              "name": "ChainlinkHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1471,
+              "src": "338:16:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                "typeString": "contract ChainlinkHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 935,
+            "name": "bridge",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "377:31:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+              "typeString": "contract AaveToKyberBridge"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 934,
+              "name": "AaveToKyberBridge",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1426,
+              "src": "377:17:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                "typeString": "contract AaveToKyberBridge"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 962,
+              "nodeType": "Block",
+              "src": "585:111:3",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 948,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 946,
+                      "name": "aave",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 929,
+                      "src": "595:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                        "typeString": "contract AaveHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 947,
+                      "name": "_aave",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 937,
+                      "src": "602:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                        "typeString": "contract AaveHandler"
+                      }
+                    },
+                    "src": "595:12:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                      "typeString": "contract AaveHandler"
+                    }
+                  },
+                  "id": 949,
+                  "nodeType": "ExpressionStatement",
+                  "src": "595:12:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 952,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 950,
+                      "name": "kyber",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 931,
+                      "src": "617:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                        "typeString": "contract KyberHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 951,
+                      "name": "_kyber",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 939,
+                      "src": "625:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                        "typeString": "contract KyberHandler"
+                      }
+                    },
+                    "src": "617:14:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                      "typeString": "contract KyberHandler"
+                    }
+                  },
+                  "id": 953,
+                  "nodeType": "ExpressionStatement",
+                  "src": "617:14:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 956,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 954,
+                      "name": "chainlink",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 933,
+                      "src": "641:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                        "typeString": "contract ChainlinkHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 955,
+                      "name": "_chainlink",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 941,
+                      "src": "653:10:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                        "typeString": "contract ChainlinkHandler"
+                      }
+                    },
+                    "src": "641:22:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                      "typeString": "contract ChainlinkHandler"
+                    }
+                  },
+                  "id": 957,
+                  "nodeType": "ExpressionStatement",
+                  "src": "641:22:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 960,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 958,
+                      "name": "bridge",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 935,
+                      "src": "673:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                        "typeString": "contract AaveToKyberBridge"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 959,
+                      "name": "_bridge",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 943,
+                      "src": "682:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                        "typeString": "contract AaveToKyberBridge"
+                      }
+                    },
+                    "src": "673:16:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                      "typeString": "contract AaveToKyberBridge"
+                    }
+                  },
+                  "id": 961,
+                  "nodeType": "ExpressionStatement",
+                  "src": "673:16:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 963,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 944,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 937,
+                  "name": "_aave",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "441:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                    "typeString": "contract AaveHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 936,
+                    "name": "AaveHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1354,
+                    "src": "441:11:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                      "typeString": "contract AaveHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 939,
+                  "name": "_kyber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "468:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                    "typeString": "contract KyberHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 938,
+                    "name": "KyberHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1602,
+                    "src": "468:12:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                      "typeString": "contract KyberHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 941,
+                  "name": "_chainlink",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "497:27:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                    "typeString": "contract ChainlinkHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 940,
+                    "name": "ChainlinkHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1471,
+                    "src": "497:16:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                      "typeString": "contract ChainlinkHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 943,
+                  "name": "_bridge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "534:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                    "typeString": "contract AaveToKyberBridge"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 942,
+                    "name": "AaveToKyberBridge",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1426,
+                    "src": "534:17:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                      "typeString": "contract AaveToKyberBridge"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "431:134:3"
+            },
+            "returnParameters": {
+              "id": 945,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "585:0:3"
+            },
+            "scope": 964,
+            "src": "415:281:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 965,
+        "src": "242:457:3"
+      }
+    ],
+    "src": "0:699:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/Registry.sol",
+    "exportedSymbols": {
+      "Registry": [
+        964
+      ]
+    },
+    "id": 965,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 920,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".8"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:3"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/ownership/Ownable.sol",
+        "file": "@openzeppelin/contracts/ownership/Ownable.sol",
+        "id": 921,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 2404,
+        "src": "24:55:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/KyberHandler.sol",
+        "file": "./handlers/KyberHandler.sol",
+        "id": 922,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1603,
+        "src": "80:37:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/ChainlinkHandler.sol",
+        "file": "./handlers/ChainlinkHandler.sol",
+        "id": 923,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1472,
+        "src": "118:41:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveHandler.sol",
+        "file": "./handlers/AaveHandler.sol",
+        "id": 924,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1355,
+        "src": "160:36:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/saitejakuruva/Documents/lucrum/contracts/handlers/AaveToKyberBridge.sol",
+        "file": "./handlers/AaveToKyberBridge.sol",
+        "id": 925,
+        "nodeType": "ImportDirective",
+        "scope": 965,
+        "sourceUnit": 1427,
+        "src": "197:42:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 926,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2403,
+              "src": "263:7:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$2403",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 927,
+            "nodeType": "InheritanceSpecifier",
+            "src": "263:7:3"
+          }
+        ],
+        "contractDependencies": [
+          2098,
+          2403
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 964,
+        "linearizedBaseContracts": [
+          964,
+          2403,
+          2098
+        ],
+        "name": "Registry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "id": 929,
+            "name": "aave",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "278:23:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AaveHandler_$1354",
+              "typeString": "contract AaveHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 928,
+              "name": "AaveHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1354,
+              "src": "278:11:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                "typeString": "contract AaveHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 931,
+            "name": "kyber",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "307:25:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_KyberHandler_$1602",
+              "typeString": "contract KyberHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 930,
+              "name": "KyberHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1602,
+              "src": "307:12:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                "typeString": "contract KyberHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 933,
+            "name": "chainlink",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "338:33:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+              "typeString": "contract ChainlinkHandler"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 932,
+              "name": "ChainlinkHandler",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1471,
+              "src": "338:16:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                "typeString": "contract ChainlinkHandler"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 935,
+            "name": "bridge",
+            "nodeType": "VariableDeclaration",
+            "scope": 964,
+            "src": "377:31:3",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+              "typeString": "contract AaveToKyberBridge"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 934,
+              "name": "AaveToKyberBridge",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 1426,
+              "src": "377:17:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                "typeString": "contract AaveToKyberBridge"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 962,
+              "nodeType": "Block",
+              "src": "585:111:3",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 948,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 946,
+                      "name": "aave",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 929,
+                      "src": "595:4:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                        "typeString": "contract AaveHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 947,
+                      "name": "_aave",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 937,
+                      "src": "602:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                        "typeString": "contract AaveHandler"
+                      }
+                    },
+                    "src": "595:12:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                      "typeString": "contract AaveHandler"
+                    }
+                  },
+                  "id": 949,
+                  "nodeType": "ExpressionStatement",
+                  "src": "595:12:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 952,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 950,
+                      "name": "kyber",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 931,
+                      "src": "617:5:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                        "typeString": "contract KyberHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 951,
+                      "name": "_kyber",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 939,
+                      "src": "625:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                        "typeString": "contract KyberHandler"
+                      }
+                    },
+                    "src": "617:14:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                      "typeString": "contract KyberHandler"
+                    }
+                  },
+                  "id": 953,
+                  "nodeType": "ExpressionStatement",
+                  "src": "617:14:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 956,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 954,
+                      "name": "chainlink",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 933,
+                      "src": "641:9:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                        "typeString": "contract ChainlinkHandler"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 955,
+                      "name": "_chainlink",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 941,
+                      "src": "653:10:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                        "typeString": "contract ChainlinkHandler"
+                      }
+                    },
+                    "src": "641:22:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                      "typeString": "contract ChainlinkHandler"
+                    }
+                  },
+                  "id": 957,
+                  "nodeType": "ExpressionStatement",
+                  "src": "641:22:3"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 960,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 958,
+                      "name": "bridge",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 935,
+                      "src": "673:6:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                        "typeString": "contract AaveToKyberBridge"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 959,
+                      "name": "_bridge",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 943,
+                      "src": "682:7:3",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                        "typeString": "contract AaveToKyberBridge"
+                      }
+                    },
+                    "src": "673:16:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                      "typeString": "contract AaveToKyberBridge"
+                    }
+                  },
+                  "id": 961,
+                  "nodeType": "ExpressionStatement",
+                  "src": "673:16:3"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 963,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 944,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 937,
+                  "name": "_aave",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "441:17:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                    "typeString": "contract AaveHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 936,
+                    "name": "AaveHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1354,
+                    "src": "441:11:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveHandler_$1354",
+                      "typeString": "contract AaveHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 939,
+                  "name": "_kyber",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "468:19:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                    "typeString": "contract KyberHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 938,
+                    "name": "KyberHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1602,
+                    "src": "468:12:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_KyberHandler_$1602",
+                      "typeString": "contract KyberHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 941,
+                  "name": "_chainlink",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "497:27:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                    "typeString": "contract ChainlinkHandler"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 940,
+                    "name": "ChainlinkHandler",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1471,
+                    "src": "497:16:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_ChainlinkHandler_$1471",
+                      "typeString": "contract ChainlinkHandler"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 943,
+                  "name": "_bridge",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 963,
+                  "src": "534:25:3",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                    "typeString": "contract AaveToKyberBridge"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 942,
+                    "name": "AaveToKyberBridge",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1426,
+                    "src": "534:17:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_AaveToKyberBridge_$1426",
+                      "typeString": "contract AaveToKyberBridge"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "431:134:3"
+            },
+            "returnParameters": {
+              "id": 945,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "585:0:3"
+            },
+            "scope": 964,
+            "src": "415:281:3",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 965,
+        "src": "242:457:3"
+      }
+    ],
+    "src": "0:699:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.1.0",
+  "updatedAt": "2020-05-19T01:24:53.411Z",
+  "devdoc": {
+    "methods": {
+      "isOwner()": {
+        "details": "Returns true if the caller is the current owner."
+      },
+      "owner()": {
+        "details": "Returns the address of the current owner."
+      },
+      "renounceOwnership()": {
+        "details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner.     * NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      },
+      "transferOwnership(address)": {
+        "details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
