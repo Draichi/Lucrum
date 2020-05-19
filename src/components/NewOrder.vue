@@ -86,7 +86,9 @@
 </template>
 
 <script>
-import { abi } from '../contracts/Lucrum.json';
+import { abi as lucrumAbi } from '../contracts/Lucrum.json';
+// import { orderAbi } from '../contracts/Order.json';
+import { abi as ierc20Abi } from '../contracts/IERC20.json';
 
 const {
   Contract,
@@ -102,7 +104,10 @@ const {
 const provider = new providers.Web3Provider(window.ethereum);
 const signer = provider.getSigner();
 // console.log(signer);
-const contractAddress = '0x65fc06E0Ae8b770CE5a6F9C457F14491D9fE5C76';
+const lucrumAddress = '0x65fc06E0Ae8b770CE5a6F9C457F14491D9fE5C76';
+const wethAddress = '0xd0a1e359811322d97991e03f863a0c30c2cf029c';
+const daiAddress = '0xca40928f22b7260a91de8aa62d4372a19f2e32ca';
+const wethContract = new Contract(wethAddress, ierc20Abi, signer);
 // const contract = new Contract(contractAddress, abi, signer);
 // const ad = '0x60215911b9cdcc25834efa09026d05a7a95a8e42';
 // const wallet = new Wallet(ad);
@@ -119,7 +124,7 @@ export default {
       gain: Math.random().toFixed(4),
       provider: new providers.Web3Provider(window.ethereum),
       signer: provider.getSigner(),
-      contract: new Contract(contractAddress, abi, signer),
+      contract: new Contract(lucrumAddress, lucrumAbi, signer),
     };
   },
   methods: {
@@ -134,10 +139,10 @@ export default {
         status: 'open',
         id: Math.random(),
       });
-      console.log(this.contract);
+      // console.log(this.contract);
       this.contract.open(
-        '0xd0a1e359811322d97991e03f863a0c30c2cf029c',
-        '0xca40928f22b7260a91de8aa62d4372a19f2e32ca',
+        wethAddress,
+        daiAddress,
         3,
         200,
         1590722871,
@@ -164,6 +169,11 @@ export default {
     model() {
       return this.$store.getters['pairs/model'];
     },
+  },
+  async mounted() {
+    //TODO: add button for taking approval from the user in the navbar
+    const tx = await wethContract.approve(lucrumAddress, '10000000000000000000000000000');
+    console.log(tx);
   },
 };
 </script>
