@@ -87,8 +87,7 @@
 
 <script>
 import { abi as lucrumAbi } from '../contracts/Lucrum.json';
-// import { orderAbi } from '../contracts/Order.json';
-
+import { abi as ierc20Abi } from '../contracts/IERC20.json';
 
 const {
   Contract,
@@ -109,6 +108,7 @@ const lucrumAddress = '0x65fc06E0Ae8b770CE5a6F9C457F14491D9fE5C76';
 
 const daiAddress = '0xca40928f22b7260a91de8aa62d4372a19f2e32ca';
 const wethAddress = '0xd0a1e359811322d97991e03f863a0c30c2cf029c';
+const wethContract = new Contract(wethAddress, ierc20Abi, signer);
 // const contract = new Contract(contractAddress, abi, signer);
 // const ad = '0x60215911b9cdcc25834efa09026d05a7a95a8e42';
 // const wallet = new Wallet(ad);
@@ -133,16 +133,28 @@ export default {
   methods: {
     async onSubmit() {
       const date = new Date();
-      this.expirationTimestamp = Math.round(date.setDate(date.getDate() + this.expiration) / 1000);
-      this.tx = await this.contract.open(
-        wethAddress,
-        daiAddress,
-        Number(utils.parseEther(this.amount)),
-        this.price,
-        this.expirationTimestamp,
-        this.type === 'buy',
+      this.expirationTimestamp = Math.round(
+        date.setDate(parseInt(date.getDate(), 10) + parseInt(this.expiration, 10)) / 1000,
       );
-      this.onReset();
+
+      try {
+        this.tx = await this.contract.open(
+          wethAddress,
+          daiAddress,
+          utils.parseEther(this.amount),
+          utils.bigNumberify(this.price * 10 ** 8),
+          utils.bigNumberify(this.expirationTimestamp),
+          this.type === 'buy',
+          {
+            gasLimit: utils.bigNumberify('7000000'),
+          },
+        );
+      } catch (err) {
+        /* Trigger for Reject button */
+        console.log('ERROR', err);
+      }
+
+      // this.onReset();
       const inputRefs = [
         'price',
         'amount',
@@ -157,23 +169,33 @@ export default {
     },
   },
   created() {
+    // const price = parseInt(this.price, 10) * 10 ** 8;
+    // const type = JSON.stringify(this.type);
+    const self = this;
+    self.price = parseInt(this.price, 10) * 10 ** 8;
+    // const gain = parseFloat(this.gain);
+    // const expirationTimestamp = parseInt(this.expirationTimestamp, 10);
     this.contract.on('LogOrderOpen', (orderID, address, returnAmount, sender) => {
       console.log({
         orderID: Number(orderID), address, returnAmount, sender,
       });
       this.$store.commit('orders/newOrder', {
-        pair: this.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
-        price: this.price,
-        type: this.type,
+        pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
+        price: self.price,
+        type: self.type,
         amount: Number(utils.formatEther(returnAmount)),
-        gain: this.gain,
-        expiration: new Date(this.expirationTimestamp * 1000).toUTCString(),
-        etherscan: `https://kovan.etherscan.io/tx/${this.tx.hash}`,
+        gain: self.gain,
+        expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
+        etherscan: `https://kovan.etherscan.io/address/${address}`,
         status: 'open',
         address,
         id: Number(orderID),
       });
     });
+  },
+  async mounted() {
+    const tx = await wethContract.approve(lucrumAddress, '10000000000000000000000000000');
+    console.log(tx);
   },
   computed: {
     textColor() {

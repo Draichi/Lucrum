@@ -1,10 +1,21 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-
+import {
+  Quasar,
+  Notify,
+} from 'quasar';
 import routes from './routes';
 
-Vue.use(VueRouter);
+Vue.use(Quasar, {
+  plugins: {
+    Notify,
+  },
+  config: {
+    notify: { /* look at QUASARCONFOPTIONS from the API card (bottom of page) */ },
+  },
+});
 
+Vue.use(VueRouter);
 /*
  * If not building with SSR mode, you can
  * directly export the Router instantiation;

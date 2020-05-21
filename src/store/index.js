@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
+import createPersistedState from 'vuex-persistedstate';
 import orders from './orders';
 import pairs from './pairs';
 import theme from './theme';
@@ -18,6 +18,9 @@ Vue.use(Vuex);
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
+    plugins: [
+      createPersistedState(),
+    ],
     modules: {
       orders,
       pairs,
