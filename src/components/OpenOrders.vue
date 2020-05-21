@@ -18,7 +18,7 @@
       >
         <q-td
           v-for="col in props.cols"
-          v-if="col.name != 'id' && col.name != 'etherscan'"
+          v-if="col.name != 'id' && col.name != 'etherscan' && col.name != 'execute'"
           :key="col.name"
           :props="props"
         >
@@ -26,6 +26,9 @@
         </q-td>
         <q-td v-else-if="col.name == 'etherscan'" align="right">
           <a :href="col.value" target="_blank">View on etherscan</a>
+        </q-td>
+        <q-td v-else-if="col.name == 'execute'" align="right">
+          <q-btn @click="executeOrder(props.row)" flat>execute order</q-btn>
         </q-td>
         <q-td v-else-if="col.name == 'id'" align="right">
           <q-btn @click="cancelOrder(props.row)" flat>cancel order</q-btn>
@@ -67,6 +70,10 @@ export default {
       const index = this.openOrders.indexOf(row);
       // const { id } = this.openOrders[index];
       this.$store.commit('orders/cancel', index);
+    },
+    executeOrder(row) {
+      console.log(row);
+      // execute logic here
     },
   },
   computed: {
