@@ -196,7 +196,6 @@ export default {
     let orderContract = [];
     let orders = [];
     const self = this;
-
     if (window.web3 && window.web3.eth && window.web3.eth.accounts[0]) {
       console.log('Before userToOrderIds', window.web3.eth.accounts[0]);
       for (let i = 0; i < 10; i += 1) {

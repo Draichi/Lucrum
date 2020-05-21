@@ -179,19 +179,20 @@ export default {
       console.log({
         orderID: Number(orderID), address, returnAmount, sender,
       });
-      this.$store.commit('orders/newOrder', {
-        pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
-        price: self.price,
-        type: self.type,
-        amount: Number(utils.formatEther(returnAmount)),
-        expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
-        etherscan: `https://kovan.etherscan.io/address/${address}`,
-        status: 'open',
-        isCancelled: false,
-        isExecuted: false,
-        address,
-        id: Number(orderID),
-      });
+      // this.$store.commit('orders/newOrder', {
+      //   pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
+      //   price: self.price,
+      //   type: self.type,
+      //   srcAmount: Number(utils.formatEther(returnAmount)),
+      //   dstAmount: Number(utils.formatEther(returnAmount)),
+      //   expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
+      //   etherscan: `https://kovan.etherscan.io/address/${address}`,
+      //   status: 'open',
+      //   isCancelled: false,
+      //   isExecuted: false,
+      //   address,
+      //   id: Number(orderID),
+      // });
     });
   },
   async mounted() {
