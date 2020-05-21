@@ -7,33 +7,30 @@
         class="column justify-evenly fit"
       >
         <div class="col">
-          <div class="row">
-            <div class="col-6">
-              <q-input
-                v-model="amount"
-                :rules="[ val => val && val.length > 0 || 'Please type something']"
-                label="Amount"
-                type="number"
-                ref="amount"
-                outlined
-                no-error-icon
-                lazy-rules
-              />
-            </div>
-            <div class="col q-ml-sm">
-              <q-input
-                v-model="price"
-                :rules="[val => val !== null && val !== '' || 'Please type the price']"
-                label="Price"
-                type="number"
-                ref="price"
-                lazy-rules
-                no-error-icon
-                outlined
-              />
-            </div>
-          </div>
+          <q-input
+            v-model="amount"
+            :rules="[ val => val && val.length > 0 || 'Please type something']"
+            label="Amount"
+            type="number"
+            ref="amount"
+            outlined
+            no-error-icon
+            lazy-rules
+          />
         </div>
+        <div class="col">
+          <q-input
+            v-model="price"
+            :rules="[ val => val && val.length > 0 || 'Please type the price']"
+            label="Price"
+            type="number"
+            ref="price"
+            lazy-rules
+            no-error-icon
+            outlined
+          />
+        </div>
+
         <div class="col">
           <q-btn-toggle
             v-model="type"
@@ -236,6 +233,6 @@ export default {
   }
 }
 .custom-buttons__container {
-  margin-bottom: 1em;
+  margin-bottom: 1.5em;
 }
 </style>
