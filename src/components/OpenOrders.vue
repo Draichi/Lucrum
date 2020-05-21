@@ -18,13 +18,16 @@
       >
         <q-td
           v-for="col in props.cols"
-          v-if="col.name != 'id'"
+          v-if="col.name != 'id' && col.name != 'etherscan'"
           :key="col.name"
           :props="props"
         >
           {{ col.value }}
         </q-td>
-        <q-td v-else align="right">
+        <q-td v-else-if="col.name == 'etherscan'" align="right">
+          <a :href="col.value" target="_blank">View on etherscan</a>
+        </q-td>
+        <q-td v-else-if="col.name == 'id'" align="right">
           <q-btn @click="cancelOrder(props.row)" flat>cancel order</q-btn>
         </q-td>
       </q-tr>
