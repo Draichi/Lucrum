@@ -15,16 +15,16 @@
       <tbody>
         <tr v-for="(item, index) in openOrders" :key="index">
           <td>
-            {{item.id}}
-          </td>
-          <td>
             {{item.pair}}
           </td>
           <td class="center-align">
-            {{(item.price)?item.price:0}}
+            {{(item.price._hex)?item.price._hex:0}}
           </td>
           <td class="center-align">
-            {{item.amount}}
+            {{item.srcAmount}}
+          </td>
+          <td class="center-align">
+            {{item.dstAmount}}
           </td>
           <td class="center-align">
             {{(new Date(item.expiration)).toLocaleDateString()}}
@@ -33,10 +33,7 @@
             {{item.type}}
           </td>
           <td class="center-align capitalize">
-            {{item.status}}
-          </td>
-          <td class="center-align">
-            {{item.gain}}
+            {{(item.isCancelled || item.isExecuted)?'closed': 'open'}}
           </td>
           <td class="center-align">
             <a :href="item.etherscan">
@@ -48,11 +45,16 @@
           </td>
           <td class="center-align">
             <div class="button-box">
-              <q-btn size="xs" color="primary" text-color="white" label="Execute"
+              <q-btn v-if="!item.isExecuted"
+              size="xs" color="primary" text-color="white" label="Execute"
               @click = "executeOrder(item)">
               </q-btn>
+              <q-btn v-if="item.isExecuted"
+              size="xs" color="primary" text-color="white" label="Withdraw"
+              @click = "withdrawOrder(item)">
+              </q-btn>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <q-btn size="xs" color="primary" text-color="white"
+              <q-btn v-if="!item.isCancelled" size="xs" color="primary" text-color="white"
               @click = "cancelOrder(item)" label="Cancel">
               </q-btn>
             </div>
@@ -101,13 +103,16 @@
 <script>
 
 import { abi as orderAbi } from '../contracts/Order.json';
+import { abi as lucrumAbi } from '../contracts/Lucrum.json';
+
+const lucrumAddress = '0x65fc06E0Ae8b770CE5a6F9C457F14491D9fE5C76';
 
 const {
   Contract,
   // getDefaultProvider,
   // Wallet,
   providers,
-  // utils,
+  utils,
 } = require('ethers');
 
 const provider = new providers.Web3Provider(window.ethereum);
@@ -125,37 +130,55 @@ export default {
         //   name: 'timestemp', align: 'left', label: 'Date', field: 'timestemp', sortable: true,
         // },
         {
-          name: 'id', label: 'Action', align: 'right', field: 'id',
-        },
-        {
           name: 'pair', label: 'Pair', field: 'pair', sortable: true, align: 'left',
         },
         { name: 'price', label: 'Price', field: 'price' },
-        { name: 'amount', label: 'Amount', field: 'amount' },
+        { name: 'source amount', label: 'Source Amount', field: 'source amount' },
+        { name: 'destination amount', label: 'Destination Amount', field: 'destination amount' },
         { name: 'expiration', label: 'Expiration time', field: 'expiration' },
         { name: 'type', label: 'Buy/Sell', field: 'type' },
         { name: 'status', label: 'Status', field: 'status' },
-        { name: 'gain', label: 'Gains', field: 'gain' },
         { name: 'etherscan', label: 'Link', field: 'etherscan' },
         { name: 'action', label: '', field: '' },
       ],
+      contract: new Contract(lucrumAddress, lucrumAbi, signer),
+      orders: [],
     };
   },
   methods: {
     async cancelOrder(row) {
       if (row.address) {
-        const orderContract = new Contract(row.address, orderAbi, signer);
-        await orderContract.cancel();
-        const index = this.openOrders.indexOf(row);
-        this.$store.commit('orders/cancel', index);
+        try {
+          const orderContract = new Contract(row.address, orderAbi, signer);
+          const cancelTx = await orderContract.cancel(
+            {
+              gasLimit: utils.bigNumberify('7000000'),
+            },
+          );
+          await cancelTx.wait();
+          const index = this.openOrders.indexOf(row);
+          this.$store.commit('orders/cancel', index);
+        } catch (err) {
+          console.log(err);
+        }
       }
     },
     async executeOrder(row) {
       if (row.address) {
         const orderContract = new Contract(row.address, orderAbi, signer);
-        debugger;
-        const res = await orderContract.execute();
-        console.log(res);
+        const tx = await orderContract.execute({
+          gasLimit: utils.bigNumberify('7000000'),
+        });
+        await tx.wait();
+      }
+    },
+    async withdrawOrder(row) {
+      if (row.address) {
+        const orderContract = new Contract(row.address, orderAbi, signer);
+        const tx = await orderContract.close({
+          gasLimit: utils.bigNumberify('7000000'),
+        });
+        await tx.wait();
       }
     },
   },
@@ -166,6 +189,60 @@ export default {
     isDark() {
       return this.$store.getters['theme/textColor'] === 'text-secondary';
     },
+  },
+  async mounted() {
+    let orderAddrs = [];
+    let userOrders = [];
+    let orderContract = [];
+    let orders = [];
+    const self = this;
+
+    if (window.web3 && window.web3.eth && window.web3.eth.accounts[0]) {
+      console.log('Before userToOrderIds', window.web3.eth.accounts[0]);
+      for (let i = 0; i < 10; i += 1) {
+        userOrders.push(this.contract.userToOrderIds(window.web3.eth.accounts[0], i));
+      }
+      userOrders = await Promise.all(userOrders);
+      for (let i = 0; i < userOrders.length; i += 1) {
+        const temp = this.contract.orders(userOrders[i]);
+        orderAddrs.push(temp);
+      }
+      orderAddrs = await Promise.all(orderAddrs);
+      for (let i = 0; i < orderAddrs.length; i += 1) {
+        orderContract = new Contract(orderAddrs[i], orderAbi, signer);
+        orders.push(orderContract.detail());
+      }
+      orders = await Promise.all(orders);
+      this.orders = orders;
+      this.orders.forEach(
+        (item, index) => {
+          self.$store.commit('orders/newOrder', {
+            // pair: (item.isBuy)? self.srcToken: self.destToken,
+            pair: item.isBuy ? 'WETH/DAI' : 'DAI/WETH',
+            price: item.triggerPrice,
+            type: self.isBuy ? 'buy' : 'sell',
+            srcAmount: Number(utils.formatEther(item.srcAmount)),
+            dstAmount: Number(utils.formatEther(item.dstAmount)),
+            expiration: new Date(item.expiryTime * 1000).toUTCString(),
+            etherscan: `https://kovan.etherscan.io/address/${orderAddrs[index]}`,
+            isCancelled: item.isCancelled,
+            isExecuted: item.isExecuted,
+            address: orderAddrs[index],
+          });
+        },
+      );
+      // this.$store.commit('order/newOrder', {
+      //   pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
+      //   price: self.price,
+      //   type: self.type,
+      //   amount: Number(utils.formatEther(returnAmount)),
+      //   expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
+      //   etherscan: `https://kovan.etherscan.io/address/${address}`,
+      //   status: 'open',
+      //   address,
+      //   id: Number(orderID),
+      // });
+    }
   },
 };
 </script>

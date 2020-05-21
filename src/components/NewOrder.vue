@@ -184,10 +184,11 @@ export default {
         price: self.price,
         type: self.type,
         amount: Number(utils.formatEther(returnAmount)),
-        gain: self.gain,
         expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
         etherscan: `https://kovan.etherscan.io/address/${address}`,
         status: 'open',
+        isCancelled: false,
+        isExecuted: false,
         address,
         id: Number(orderID),
       });
