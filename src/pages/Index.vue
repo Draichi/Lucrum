@@ -8,6 +8,7 @@
       <div class="column col q-mr-md">
         <!-- <PairSelector/> -->
         <NewOrder/>
+        <Price/>
       </div>
     </div>
   </div>
@@ -18,6 +19,7 @@
 import OpenOrders from '../components/OpenOrders';
 import NewOrder from '../components/NewOrder';
 import Chart from '../components/Chart';
+import Price from '../components/Price';
 // import PairSelector from '../components/PairSelector';
 import config from '../../config';
 
@@ -27,6 +29,7 @@ export default {
     Chart,
     OpenOrders,
     NewOrder,
+    Price,
     // PairSelector,
   },
   created() {
