@@ -18,7 +18,7 @@
             {{item.pair}}
           </td>
           <td class="center-align">
-            {{(item.price._hex)?item.price._hex:0}}
+            {{(item.price && item.price._hex)?item.price._hex:0}}
           </td>
           <td class="center-align">
             {{item.srcAmount}}
@@ -49,12 +49,13 @@
               size="xs" color="primary" text-color="white" label="Execute"
               @click = "executeOrder(item)">
               </q-btn>
-              <q-btn v-if="item.isExecuted"
+              <q-btn v-if="item.isExecuted && !item.isWithdrawn"
               size="xs" color="primary" text-color="white" label="Withdraw"
               @click = "withdrawOrder(item)">
               </q-btn>
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <q-btn v-if="!item.isCancelled" size="xs" color="primary" text-color="white"
+              <q-btn v-if="!item.isCancelled && !item.isWithdrawn"
+              size="xs" color="primary" text-color="white"
               @click = "cancelOrder(item)" label="Cancel">
               </q-btn>
             </div>
@@ -164,12 +165,27 @@ export default {
       }
     },
     async executeOrder(row) {
+      debugger;
       if (row.address) {
         const orderContract = new Contract(row.address, orderAbi, signer);
+        orderContract.on('LogOrderExecuted', (currPrice, redeemAmount, dstAmount) => {
+          console.log('dstAmount ', dstAmount);
+          this.$store.commit('orders/updateOrder', {
+            dstAmount: Number(utils.formatEther(dstAmount)),
+            etherscan: `https://kovan.etherscan.io/address/${row.address}`,
+            status: 'closed',
+            isCancelled: false,
+            isExecuted: true,
+            isWithdrawn: false,
+          });
+        });
         const tx = await orderContract.execute({
           gasLimit: utils.bigNumberify('7000000'),
         });
         await tx.wait();
+        debugger;
+        this.$store.commit('orders/markExecuted', row);
+        await this.fetchOrders();
       }
     },
     async withdrawOrder(row) {
@@ -179,7 +195,65 @@ export default {
           gasLimit: utils.bigNumberify('7000000'),
         });
         await tx.wait();
+        this.$store.commit('orders/markWithdrawn', row);
       }
+    },
+    async fetchOrders() {
+      let orderAddrs = [];
+      let userOrders = [];
+      let orderContract = [];
+      let orders = [];
+      const self = this;
+      if (window.web3 && window.web3.eth && window.web3.eth.accounts[0]) {
+        console.log('Before userToOrderIds', window.web3.eth.accounts[0]);
+        for (let i = 0; i < 100; i += 1) {
+          userOrders.push(this.contract.userToOrderIds(window.web3.eth.accounts[0], i));
+        }
+        userOrders = await Promise.all(userOrders);
+        for (let i = 0; i < userOrders.length; i += 1) {
+          const temp = this.contract.orders(userOrders[i]);
+          orderAddrs.push(temp);
+        }
+        orderAddrs = await Promise.all(orderAddrs);
+        for (let i = 0; i < orderAddrs.length; i += 1) {
+          orderContract = new Contract(orderAddrs[i], orderAbi, signer);
+          orders.push(orderContract.detail());
+        }
+        orders = await Promise.all(orders);
+        this.orders = orders;
+        debugger;
+        this.orders.forEach(
+          (item, index) => {
+            self.$store.commit('orders/newOrder', {
+              // pair: (item.isBuy)? self.srcToken: self.destToken,
+              pair: item.isBuy ? 'WETH/DAI' : 'DAI/WETH',
+              price: item.triggerPrice,
+              type: self.isBuy ? 'buy' : 'sell',
+              srcAmount: Number(utils.formatEther(item.srcAmount)),
+              dstAmount: Number(utils.formatEther(item.dstAmount)),
+              expiration: new Date(item.expiryTime * 1000).toUTCString(),
+              etherscan: `https://kovan.etherscan.io/address/${orderAddrs[index]}`,
+              isCancelled: item.isCancelled,
+              isExecuted: item.isExecuted,
+              address: orderAddrs[index],
+            });
+          },
+        );
+        // this.$store.commit('order/newOrder', {
+        //   pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
+        //   price: self.price,
+        //   type: self.type,
+        //   amount: Number(utils.formatEther(returnAmount)),
+        //   expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
+        //   etherscan: `https://kovan.etherscan.io/address/${address}`,
+        //   status: 'open',
+        //   address,
+        //   id: Number(orderID),
+        // });
+      }
+    },
+    clearOrders() {
+      this.$store.commit('orders/clearData');
     },
   },
   computed: {
@@ -191,57 +265,7 @@ export default {
     },
   },
   async mounted() {
-    let orderAddrs = [];
-    let userOrders = [];
-    let orderContract = [];
-    let orders = [];
-    const self = this;
-    if (window.web3 && window.web3.eth && window.web3.eth.accounts[0]) {
-      console.log('Before userToOrderIds', window.web3.eth.accounts[0]);
-      for (let i = 0; i < 10; i += 1) {
-        userOrders.push(this.contract.userToOrderIds(window.web3.eth.accounts[0], i));
-      }
-      userOrders = await Promise.all(userOrders);
-      for (let i = 0; i < userOrders.length; i += 1) {
-        const temp = this.contract.orders(userOrders[i]);
-        orderAddrs.push(temp);
-      }
-      orderAddrs = await Promise.all(orderAddrs);
-      for (let i = 0; i < orderAddrs.length; i += 1) {
-        orderContract = new Contract(orderAddrs[i], orderAbi, signer);
-        orders.push(orderContract.detail());
-      }
-      orders = await Promise.all(orders);
-      this.orders = orders;
-      this.orders.forEach(
-        (item, index) => {
-          self.$store.commit('orders/newOrder', {
-            // pair: (item.isBuy)? self.srcToken: self.destToken,
-            pair: item.isBuy ? 'WETH/DAI' : 'DAI/WETH',
-            price: item.triggerPrice,
-            type: self.isBuy ? 'buy' : 'sell',
-            srcAmount: Number(utils.formatEther(item.srcAmount)),
-            dstAmount: Number(utils.formatEther(item.dstAmount)),
-            expiration: new Date(item.expiryTime * 1000).toUTCString(),
-            etherscan: `https://kovan.etherscan.io/address/${orderAddrs[index]}`,
-            isCancelled: item.isCancelled,
-            isExecuted: item.isExecuted,
-            address: orderAddrs[index],
-          });
-        },
-      );
-      // this.$store.commit('order/newOrder', {
-      //   pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
-      //   price: self.price,
-      //   type: self.type,
-      //   amount: Number(utils.formatEther(returnAmount)),
-      //   expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
-      //   etherscan: `https://kovan.etherscan.io/address/${address}`,
-      //   status: 'open',
-      //   address,
-      //   id: Number(orderID),
-      // });
-    }
+    await this.fetchOrders();
   },
 };
 </script>

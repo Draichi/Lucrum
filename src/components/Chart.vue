@@ -34,7 +34,7 @@ export default {
   data() {
     return {
       width: '500',
-      height: '500',
+      height: '200',
     };
   },
   mounted() {

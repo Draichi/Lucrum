@@ -3,7 +3,10 @@
     <div class="label">WETH/DAI</div>
     <div class="label">Price: <strong>{{ lastPrice }}</strong> DAI</div>
     <div class="icon" style="">
-      <iframe src="https://giphy.com/embed/47GPQ7ZzivsemHKPvB" width="50" height="60" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      <iframe src="https://giphy.com/embed/47GPQ7ZzivsemHKPvB" width="50" height="100" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    </div>
+    <div>
+      POWERED BY CHAINLINK<img style="position: relative; top: 10px; left: 5px;" width="30" src="https://s3.ap-south-1.amazonaws.com/nuo-public/nuo_web/images/link.svg"/>
     </div>
   </q-card>
 </template>

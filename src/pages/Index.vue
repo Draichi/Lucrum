@@ -3,14 +3,15 @@
     <div class="row q-mt-sm custom-row">
       <div class="col-9 q-mx-md" id="tradingview-wrapper">
         <Chart/>
-        <OpenOrders/>
       </div>
       <div class="column col q-mr-md">
         <!-- <PairSelector/> -->
         <NewOrder/>
-        <Price/>
+        <Price class="price-fire" />
       </div>
     </div>
+    <OpenOrders/>
+
   </div>
 </template>
 <script>
@@ -62,6 +63,10 @@ export default {
 
 <style lang="scss">
 .custom-row {
-  height: 60vh;
+  // height: 60vh;
+}
+.price-fire {
+  position: relative;
+  top: 15px;
 }
 </style>

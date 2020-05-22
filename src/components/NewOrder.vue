@@ -103,7 +103,7 @@ const signer = provider.getSigner();
 // console.log(signer);
 const lucrumAddress = '0x65fc06E0Ae8b770CE5a6F9C457F14491D9fE5C76';
 
-const daiAddress = '0xca40928f22b7260a91de8aa62d4372a19f2e32ca';
+const daiAddress = '0xFf795577d9AC8bD7D90Ee22b6C1703490b6512FD';
 const wethAddress = '0xd0a1e359811322d97991e03f863a0c30c2cf029c';
 const wethContract = new Contract(wethAddress, ierc20Abi, signer);
 // const contract = new Contract(contractAddress, abi, signer);
@@ -176,20 +176,21 @@ export default {
       console.log({
         orderID: Number(orderID), address, returnAmount, sender,
       });
-      // this.$store.commit('orders/newOrder', {
-      //   pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
-      //   price: self.price,
-      //   type: self.type,
-      //   srcAmount: Number(utils.formatEther(returnAmount)),
-      //   dstAmount: Number(utils.formatEther(returnAmount)),
-      //   expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
-      //   etherscan: `https://kovan.etherscan.io/address/${address}`,
-      //   status: 'open',
-      //   isCancelled: false,
-      //   isExecuted: false,
-      //   address,
-      //   id: Number(orderID),
-      // });
+      this.$store.commit('orders/newOrder', {
+        pair: self.type === 'buy' ? 'WETH/DAI' : 'DAI/WETH',
+        price: self.price,
+        type: self.type,
+        srcAmount: Number(utils.formatEther(returnAmount)),
+        dstAmount: Number(utils.formatEther(returnAmount)),
+        expiration: new Date(self.expirationTimestamp * 1000).toUTCString(),
+        etherscan: `https://kovan.etherscan.io/address/${address}`,
+        status: 'open',
+        isCancelled: false,
+        isExecuted: false,
+        isWithdrawn: false,
+        address,
+        id: Number(orderID),
+      });
     });
   },
   async mounted() {
