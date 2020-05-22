@@ -1,5 +1,5 @@
 export const newOrder = (state, payload) => {
-  debugger;
+  // debugger; cannot build with debugger
   const ifExists = state.data.find(
     (item) => item.etherscan === payload.etherscan,
   );
